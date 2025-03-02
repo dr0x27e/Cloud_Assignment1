@@ -42,6 +42,10 @@ func StatusHandler(w http.ResponseWriter, r *http.Request) {
 		Uptime:        int(time.Since(StartTime).Round(time.Second).Seconds()),
 	}
 
+	// Closing bodies.
+	defer statusRest.Body.Close()
+	defer statusCountries.Body.Close()
+
 	w.Header().Set("Content-Type", "application/json")
 
 	// Send the response

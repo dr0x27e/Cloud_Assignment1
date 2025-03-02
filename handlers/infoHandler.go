@@ -63,6 +63,7 @@ func InfoHandler(w http.ResponseWriter, r *http.Request) {
 	if ServerError(cliErr) {
 		return
 	}
+	defer response.Body.Close()
 
 	// Read Response and turn it go readable:
 	body, err := io.ReadAll(response.Body)
@@ -97,6 +98,7 @@ func InfoHandler(w http.ResponseWriter, r *http.Request) {
 	if ServerError(cliErr) {
 		return
 	}
+	defer response.Body.Close()
 
 	// Read Response:
 	body, err = io.ReadAll(response.Body)

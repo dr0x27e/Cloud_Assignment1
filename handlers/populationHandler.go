@@ -39,6 +39,7 @@ func PopulationHandler(w http.ResponseWriter, r *http.Request) {
 	if ServerError(err) {
 		return
 	}
+	defer resp.Body.Close()
 
 	// Read Response:
 	body, err := io.ReadAll(resp.Body)
@@ -80,6 +81,7 @@ func PopulationHandler(w http.ResponseWriter, r *http.Request) {
 	if ServerError(cliErr) {
 		return
 	}
+	defer resp.Body.Close()
 
 	// Read Response:
 	body, err = io.ReadAll(resp.Body)
